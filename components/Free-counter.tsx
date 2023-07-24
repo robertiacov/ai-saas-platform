@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";
 import { MAX_FREE_COUNTS } from "@/constants";
+import { useProModel } from "@/hooks/use-pro-model";
 
 
 interface FreeCounterProps {
@@ -14,7 +15,7 @@ interface FreeCounterProps {
 export const FreeCounter = ({
     apiLimitCount = 0
 }: FreeCounterProps) => {
-
+    const proModal = useProModel();
     const [mounted, setMounted] = useState(false);
     
 
@@ -36,7 +37,7 @@ export const FreeCounter = ({
                         </p>
                         <Progress className="h-3" value={(apiLimitCount / MAX_FREE_COUNTS) * 100} />
                     </div>
-                    <Button variant="premium" className="w-full">
+                    <Button onClick={proModal.onOpen} variant="premium" className="w-full">
                         Upgrade
                     <Zap className="w-4 h-4 ml-2 fill-white" />
                     </Button>
