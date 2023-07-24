@@ -22,8 +22,10 @@ import { Loader } from "@/components/Loader";
 import { UserAvatar } from "@/components/User-avatar";
 import { BotAvatar } from "@/components/Bot-avatar";
 import { cn } from "@/lib/utils";
+import { useProModel } from "@/hooks/use-pro-model";
 
 const CodePage = () => {
+    const proModal = useProModel();
     const router = useRouter();
     const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([])
 
@@ -52,7 +54,9 @@ const CodePage = () => {
 
             form.reset();
         } catch (error: any) {
-            // TODO: Open Pro Modal
+            if(error?.response?.status === 403){
+                proModal.onOpen();
+            }
             console.log(error)
         } finally {
             router.refresh();
