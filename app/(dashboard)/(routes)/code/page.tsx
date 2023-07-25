@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { ChatCompletionRequestMessage } from "openai"
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { toast } from "react-hot-toast"
 
 
 import Heading from "@/components/Heading"
@@ -56,8 +57,9 @@ const CodePage = () => {
         } catch (error: any) {
             if(error?.response?.status === 403){
                 proModal.onOpen();
+            } else {
+                toast.error("Something went wrong")
             }
-            console.log(error)
         } finally {
             router.refresh();
         }
