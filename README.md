@@ -1,5 +1,4 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/robert1564/ai-saas-platform/badge)](https://www.codefactor.io/repository/github/robert1564/ai-saas-platform)
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
